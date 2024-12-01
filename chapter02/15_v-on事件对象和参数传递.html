@@ -9,9 +9,8 @@
   <body>
     <div id="app"></div>
     <template id="my-app">
-      <div v-bind="info">v-bind动态绑定对象</div>
-      <!--可读性不好，不推荐-->
-      <div :="info">v-bind动态绑定一个对象</div>
+      <button v-on:click="btn1Click">自动传入event对象</button>
+      <button v-on:click="btn2Click($event,'coderwhy',18)">手动传入event对象</button>
     </template>
     <script src="./js/vue.js"></script>
     <script>
@@ -19,14 +18,16 @@
         template: "#my-app",
         data() {
           return {
-            info :{
-              name:"why",
-              age:18,
-              height:1.88
-            }
+            count:0
           };
         },
         methods: {
+          btn1Click(){
+            console.log(event);
+          },
+          btn2Click(event,name,value){
+            console.log(event,name,value);
+          }
         },
       };
       Vue.createApp(App).mount("#app");

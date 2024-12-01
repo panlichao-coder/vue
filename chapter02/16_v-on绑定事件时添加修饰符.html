@@ -5,13 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <title>Document</title>
+    <style>
+    </style>
   </head>
   <body>
     <div id="app"></div>
     <template id="my-app">
-      <div v-bind="info">v-bind动态绑定对象</div>
-      <!--可读性不好，不推荐-->
-      <div :="info">v-bind动态绑定一个对象</div>
+      <div @click="divClick" :style="{width:'100px',height:'100px',backgroundColor:green}">
+        <button @click.stop="btnClick">button按钮</button>
+        <input type="text" @click.stop @keyup.enter="enterkeyup">
+      </div>
     </template>
     <script src="./js/vue.js"></script>
     <script>
@@ -19,14 +22,19 @@
         template: "#my-app",
         data() {
           return {
-            info :{
-              name:"why",
-              age:18,
-              height:1.88
-            }
+            count:0
           };
         },
         methods: {
+          btnClick(){
+            console.log("按钮点击");
+          },
+          divClick(){
+            console.log("块点击");
+          },
+          enterkeyup(event){
+            console.log("Enter键按下",event.target.value);
+          }
         },
       };
       Vue.createApp(App).mount("#app");
