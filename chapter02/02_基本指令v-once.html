@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <template id="my-app">
+      <h2>h2:{{count}}</h2>
+      <!-- 以下内容都只会渲染一次 -->
+      <h3 v-once>h3:{{count}}</h3>
+      <div v-once>
+        <h4>h4:{{count}}</h4>
+        <h5>h5:{{message}}</h5>
+      </div>
+      <!-- 单击按钮会触发重新渲染，只有h2的数字会加 -->
+      <button @click="increment">+1</button>
+    </template>
+    <script src="./js/vue.js"></script>
+    <script>
+      const App = {
+        template: "#my-app",
+        data() {
+          return {
+            message: "Hello Vue!",
+            count: 0,
+          };
+        },
+        methods: {
+          increment() {
+            this.count++;
+          },
+        },
+      };
+      Vue.createApp(App).mount("#app");
+    </script>
+  </body>
+</html>

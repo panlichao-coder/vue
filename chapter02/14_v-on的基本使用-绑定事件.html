@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .area {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app"></div>
+    <template id="my-app">
+      <!--监听的事件关联方法-->
+      <button v-on:click="btn1Click">监听按钮单击</button>
+      <div class="area" v-on:mousemove="mouseMove">监听鼠标移动事件</div>
+      <button @click="btn1Click">监听按钮单击</button>
+      <!--表达式-->
+      <button @click="count++">{{count}}</button>
+      <!--绑定一个对象-->
+      <div class="area" v-on="{click:btn1Click,mousemove:mouseMove}">监听鼠标移动事件</div>
+      <div class="area" @="{click:btn1Click,mousemove:mouseMove}">监听鼠标移动事件</div>
+    </template>
+    <script src="./js/vue.js"></script>
+    <script>
+      const App = {
+        template: "#my-app",
+        data() {
+          return {
+            count:0
+          };
+        },
+        methods: {
+          btn1Click(){
+            console.log("btn1Click");
+          },
+          mouseMove(){
+            console.log("mouseMove");
+          }
+        },
+      };
+      Vue.createApp(App).mount("#app");
+    </script>
+  </body>
+</html>

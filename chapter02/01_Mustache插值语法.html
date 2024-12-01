@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <template id="my-app">
+      <!-- 基本用法 -->
+      <h4>{{message }} - {{isShow}}</h4>
+      <!-- 表达式 -->
+      <h4>{{count * 10}}</h4>
+      <h4>{{ message.split(" ").join("-")}}</h4>
+      <h4>{{isShow?"三元运算符":"不是三元运算符"}}</h4>
+      <!-- 函数 -->
+      <h4>{{ getReverseMessage() }}</h4>
+      <button @click="toggle">切换控制显示</button>
+
+      <!-- 不支持赋值语句 -->
+      <!-- <h4>{{ var name = "Hello" }}</h4> -->
+      <!-- 不支持判断语句，但支持三元运算符 -->
+      <!-- <h4>{{ if (true) {return message} }}</h4> -->
+    </template>
+    <script src="./js/vue.js"></script>
+    <script>
+      const App = {
+        template: "#my-app",
+        data() {
+          return {
+            message: "Hello Vue!",
+            count: 100,
+            isShow: true,
+          };
+        },
+        methods: {
+          getReverseMessage() {
+            return this.message.split("").reverse().join("");
+          },
+          toggle() {
+            this.isShow = !this.isShow;
+          },
+        },
+      };
+      Vue.createApp(App).mount("#app");
+    </script>
+  </body>
+</html>

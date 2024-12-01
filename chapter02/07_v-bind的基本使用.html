@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+    <title>Document</title>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div id="app"></div>
+<template id="my-app">
+    <img v-bind:src="imgUrl" alt="">
+    <a v-bind:href="link">百度一下</a>
+    <!--冒号语法绑定属性是v-bind指令的语法糖-->
+    <img :src="imgUrl" alt="" sty>
+    <!--直接赋值imgUrl字符串给src属性，这里填入的参数应该是一个地址-->
+    <img src="imgUrl" alt="">
+
+</template>
+<script src="./js/vue.js"></script>
+<script>
+    const App = {
+        template: "#my-app",
+        data() {
+            return {
+                imgUrl: "https://v2.cn.vuejs.org/images/logo.svg",
+                link: "https://www.baidu.com"
+            };
+        },
+        methods: {},
+    };
+    Vue.createApp(App).mount("#app");
+</script>
+</body>
+</html>
