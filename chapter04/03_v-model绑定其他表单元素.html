@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <template id="my-app">
+      <div>第一步：自我介绍</div>
+      <textarea cols="30" rows="3" v-model="intro"></textarea>
+      <p>文本输入框的值：{{intro}}</p>
+
+      <div>第二步：点击按钮</div>
+      <label for="agree">
+        <input id="agree" type="checkbox" v-model="isAgree">同意协议
+      </label>
+      <p>单选框的值：{{isAgree}}</p>
+
+      <div>第三步：爱好</div>
+      <label for="basketball">
+        <input id="basketball" type="checkbox" v-model="hobbies" value="basketball">篮球
+      </label>
+      <label for="football">
+        <input id="football" type="checkbox" v-model="hobbies" value="football">足球
+      </label>
+      <label for="tennis">
+        <input id="tennis" type="checkbox" v-model="hobbies" value="tennis">网球
+      </label>
+      <p>多选框的值：{{hobbies}}</p>
+
+      <div>第四步：性别</div>
+      <label for="male">
+        <input id="male" type="radio" v-model="gender" value="male">男
+      </label>
+      <label for="female">
+        <input id="female" type="radio" v-model="gender" value="female">女
+      </label>
+      <p>单选框的值：{{gender}}</p>
+
+      <div>第五步：喜欢的食物</div>
+      <select v-model="fruit" multiple size="4">
+        <option value="apple">苹果</option>
+        <option value="orange">桔子</option>
+        <option value="banana">香蕉</option>
+      </select>
+      <p>选择的值：{{fruit}}</p>
+    </template>
+
+    <script src="./js/vue.js"></script>
+    <script>
+      const App = {
+        template: "#my-app",
+        data() {
+          return {
+            intro:"Hello World",
+            isAgree:false,
+            hobbies:["basketball"],
+            gender:"",
+            fruit:["orange"]
+          };
+        },
+        methods: {
+          inputChange(event){
+            this.message = event.target.value;
+          }
+        },
+      };
+      Vue.createApp(App).mount("#app");
+    </script>
+  </body>
+</html>
