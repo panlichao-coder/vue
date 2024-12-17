@@ -1,0 +1,62 @@
+<style>
+    .comps-a,
+    .comps-b{
+        border: 1px solid #999;
+        margin: 3px;
+    }
+</style>
+
+<body>
+    <div id="app"></div>
+    <template id="my-app">
+        <div class="comps-b">
+            <input type="text" v-model="message">
+            <h4>{{message}}</h4>
+        </div>
+        <!--使用全局组件-->
+        <component-a></component-a>
+    </template>
+
+    <template id="component-a">
+        <div class="comps-a">
+            <h4>{{title}}</h4>
+            <p>{{desc}}</p>
+            <button @click="btnClick">按钮点击</button>
+        </div>
+    </template>
+    
+
+    <script src="./js/vue.js"></script>
+    <script>
+        const App = {
+            template:"#my-app",
+            data(){
+                return {
+                    message: "Hello World"
+                }
+            },
+            methods:{
+                btnClick(){
+                    console.log("按钮发生单击事件");
+                }
+            }
+        }
+        const app = Vue.createApp(App);
+        // 注册全局组件
+        app.component("component-a",{
+            template:"#component-a",
+            data(){
+                return {
+                    title: "我是标题",
+                    desc: "内容显示区域...",
+                };
+            },
+            methods:{
+                btnClick(){
+                    console.log("按钮的单击")
+                }
+            }
+        })
+        app.mount("#app");
+    </script>
+</body>
