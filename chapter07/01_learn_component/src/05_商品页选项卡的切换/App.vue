@@ -1,7 +1,7 @@
 <template>
     <div class="app">
         <TabControl @titleClick="modify"></TabControl>
-        <h2>{{ tabName }}</h2>
+        <h2>{{ name }}</h2>
     </div>
 </template>
 <script>
@@ -9,7 +9,7 @@ import TabControl from './TabControl.vue';
 export default {
     props: {
         tabName: {
-            type: string,
+            type: String,
             default() {
                 return "";
             }
@@ -20,12 +20,15 @@ export default {
     },
     data() {
         return {
-            tabName: ""
+            name: ""
         }
     },
+    created(){
+        this.name = "衣服"
+    },
     methods: {
-        modify() {
-            this.tabName = tabName
+        modify(tabName) {
+            this.name = tabName
         },
     }
 }
