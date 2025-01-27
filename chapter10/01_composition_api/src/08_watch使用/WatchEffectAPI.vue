@@ -1,7 +1,9 @@
 <template>
-    <div>WatchEffectAPI</div>
-    <h2>{{ age }}</h2>
-    <button @click="changeName">WatchEffectAPI修改name</button>
+    <div>
+        <div>WatchEffectAPI</div>
+        <h2>{{ age }}</h2>
+        <button @click="changeName">WatchEffectAPI修改name</button>
+    </div>
 </template>
 <script>
 import { ref, watchEffect } from "vue";

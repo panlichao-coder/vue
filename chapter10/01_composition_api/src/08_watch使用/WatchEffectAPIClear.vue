@@ -1,7 +1,9 @@
 <template>
-    <div>WatchEffectAPIClear</div>
-    <h2>{{ age }}</h2>
-    <button @click="changeName">WatchEffectAPIClear修改name</button>
+    <div>
+        <div>WatchEffectAPIClear</div>
+        <h2>{{ age }}</h2>
+        <button @click="changeName">WatchEffectAPIClear修改name</button>
+    </div>
 </template>
 
 <script>
